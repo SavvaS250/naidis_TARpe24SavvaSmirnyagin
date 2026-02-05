@@ -34,5 +34,6 @@ public partial class StartPage : ContentPage
     {
         Button btn = sender as Button;
         await Navigation.PushAsync(lehed[btn.ZIndex]);
+
     }
 }
