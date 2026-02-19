@@ -2,23 +2,21 @@ namespace naidis_TARpe24SavvaSmirnyagin;
 
 public partial class StartPage : ContentPage
 {
-    public List<ContentPage> lehed = new List<ContentPage>() { new TextPage(), new FigurePage() };
-    public List<string> leheNimed = new List<string>() { "Tekst", "Kujund"};
-
-    ScrollView sv;
     VerticalStackLayout vst;
-	public StartPage()
+    ScrollView sv;
+    public List<ContentPage> Lehed = new List<ContentPage>() { new TextPage(), new FigurePage(), new ValgusFoor(), new DateTime_Page() };
+    public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime" };
+    public StartPage()
     {
-        //InitializeComponent();
-        Title = "Avaleht";
+        //Title = "Avaleht";
         vst = new VerticalStackLayout { Padding = 20, Spacing = 15 };
-        for (int i = 0; i < lehed.Count; i++)
+        for (int i = 0; i < Lehed.Count; i++)
         {
             Button nupp = new Button
             {
-                Text = leheNimed[i],
-                FontSize = 36,
-                FontFamily = "Luffio",
+                Text = LeheNimed[i],
+                FontSize = 30,
+                FontFamily = "Times new roman",
                 BackgroundColor = Colors.LightGray,
                 TextColor = Colors.Black,
                 CornerRadius = 10,
@@ -28,7 +26,7 @@ public partial class StartPage : ContentPage
             vst.Add(nupp);
             nupp.Clicked += (sender, e) =>
             {
-                var valik = lehed[nupp.ZIndex];
+                var valik = Lehed[nupp.ZIndex];
                 Navigation.PushAsync(valik);
             };
         }
