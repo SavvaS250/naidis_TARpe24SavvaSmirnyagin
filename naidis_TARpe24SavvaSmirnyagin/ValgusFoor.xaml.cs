@@ -12,7 +12,6 @@ public partial class ValgusFoor : ContentPage
     HorizontalStackLayout hsl;
     HorizontalStackLayout hsl2;
     List<string> nupud = new List<string>() { "Tagasi", "Avaleht", "Edasi" };
-    List<string> nupud2 = new List<string>() { "Sisse/Välja" };
     VerticalStackLayout vsl;
     bool isOn = false;
     public ValgusFoor()
@@ -113,7 +112,6 @@ public partial class ValgusFoor : ContentPage
                 ZIndex = j
             };
             hsl.Add(nupp);
-            nupp.Clicked += Liikumine;
         }
         vsl = new VerticalStackLayout
         {
@@ -128,7 +126,6 @@ public partial class ValgusFoor : ContentPage
     private void Valja_Clicked(object? sender, EventArgs e)
     {
         isOn = false;
-
         pall1.Fill = Colors.Gray;
         pall2.Fill = Colors.Gray;
         pall3.Fill = Colors.Gray;
@@ -163,27 +160,6 @@ public partial class ValgusFoor : ContentPage
         else if (vajutatudpall == pall3)
         {
             label.Text = "Sõida!";
-        }
-    }
-
-    private void Liikumine(object? sender, EventArgs e)
-    {
-        Button nupp = sender as Button;
-        if (nupp.ZIndex == 0)
-        {
-            Navigation.PushAsync(new TextPage());
-        }
-        else if (nupp.ZIndex == 1)
-        {
-            Navigation.PopToRootAsync();
-        }
-        else if (nupp.ZIndex == 2)
-        {
-            Navigation.PushAsync(new FigurePage());//siia lisame uue lehe, et saaks edasi liikuda
-        }
-        else if (nupp.ZIndex == 3)
-        {
-            Navigation.PushAsync(new ValgusFoor());//siia lisame uue lehe, et saaks edasi liikuda
         }
     }
 }
