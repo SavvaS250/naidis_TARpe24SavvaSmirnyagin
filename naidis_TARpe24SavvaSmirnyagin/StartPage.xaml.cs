@@ -5,8 +5,8 @@ public partial class StartPage : ContentPage
     VerticalStackLayout vst;
     ScrollView sv;
     public List<ContentPage> Lehed = new List<ContentPage>() { new TextPage(), new FigurePage(), new ValgusFoor(), new DateTime_Page()
-        , new StepperSliderPage(), new RgbSlider(), new LumememmPage() };
-    public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm" };
+        , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page() };
+    public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm", "Pop up" };
     public StartPage()
     {
         //Title = "Avaleht";
@@ -30,8 +30,47 @@ public partial class StartPage : ContentPage
                 var valik = Lehed[nupp.ZIndex];
                 Navigation.PushAsync(valik);
             };
+
+            
         }
+        Button nulliNupp = new Button
+        {
+            Text = "Nulli seaded (Testimiseks)",
+            BackgroundColor = Colors.Red,
+            TextColor = Colors.White,
+            CornerRadius = 10,
+            HeightRequest = 50,
+            Margin = new Thickness(0, 30, 0, 0)
+        };
+
+        nulliNupp.Clicked += async (sender, e) =>
+        {
+            Preferences.Default.Remove("EsimeneKäivitamine");
+
+            await DisplayAlertAsync("Edukalt nullitud", "Mälu on tühjendatud.", "OK");
+        };
+        vst.Add(nulliNupp);
         sv = new ScrollView { Content = vst };
         Content = sv;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        bool onEsimeneStart = Preferences.Default.Get("EsimeneKäivitamine", true);
+
+        if (onEsimeneStart)
+        {
+            bool vastus = await DisplayAlertAsync("Tere tulemast!", "Tundub, et avasid selle rakenduse esimest korda. Kas soovid näha juhendid?",
+                "Jah, palun", "Ei, saan ise hakkama");
+
+            if (vastus)
+            {
+                await DisplayAlertAsync("Juhend", "Siin on sinu lühike juhend: vali menüüst sobiv teema ja uuri, kuidas elemendid töötavad!", "Selge");
+            }
+
+            Preferences.Default.Set("EsimeneKäivitamine", false);
+        }
     }
 }
