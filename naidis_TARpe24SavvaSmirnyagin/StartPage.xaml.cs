@@ -1,3 +1,4 @@
+using Microsoft.Maui.Storage;
 namespace naidis_TARpe24SavvaSmirnyagin;
 
 public partial class StartPage : ContentPage
@@ -5,8 +6,9 @@ public partial class StartPage : ContentPage
     VerticalStackLayout vst;
     ScrollView sv;
     public List<ContentPage> Lehed = new List<ContentPage>() { new TextPage(), new FigurePage(), new ValgusFoor(), new DateTime_Page()
-        , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page() };
-    public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm", "Pop up" };
+        , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page(), new PopUp_MoistatusedPage() };
+    public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm", "Pop up",
+          "Mõistatuste leht"};
     public StartPage()
     {
         //Title = "Avaleht";
