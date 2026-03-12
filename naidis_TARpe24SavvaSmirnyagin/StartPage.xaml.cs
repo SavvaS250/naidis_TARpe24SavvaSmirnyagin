@@ -6,9 +6,10 @@ public partial class StartPage : ContentPage
     VerticalStackLayout vst;
     ScrollView sv;
     public List<ContentPage> Lehed = new List<ContentPage>() { new TextPage(), new FigurePage(), new ValgusFoor(), new DateTime_Page()
-        , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page(), new PopUp_MoistatusedPage() };
+        , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page(), new PopUp_MoistatusedPage(), new PickerImageGrid()
+        , new TripsTrapsTrull()};
     public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm", "Pop up",
-          "Mõistatuste leht"};
+          "Mõistatuste leht", "Picker image grid", "Trips-Traps-Trull"};
     public StartPage()
     {
         //Title = "Avaleht";
