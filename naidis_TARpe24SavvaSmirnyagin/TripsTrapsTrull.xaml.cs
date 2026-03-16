@@ -5,10 +5,12 @@ namespace naidis_TARpe24SavvaSmirnyagin;
 public partial class TripsTrapsTrull : ContentPage
 {
     Grid gr4x1, gr3x3;
-    Picker picker;
-    Image img;
-    Switch s_pilt, s_grid;
     Random rnd = new Random();
+    Button sinine;
+    Button roheline;
+    Button uuesti;
+    Label label;
+    string player = "Roheline";
     public TripsTrapsTrull()
 	{
         gr4x1 = new Grid
@@ -27,51 +29,42 @@ public partial class TripsTrapsTrull : ContentPage
             },
         };
 
-
-        s_pilt = new Switch
+        label = new Label
         {
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center,
-            IsToggled = true,
-            IsEnabled = true
-        };
-        s_pilt.Toggled += (sender, e) =>
-        {
-            if (e.Value)
-            {
-                img.IsVisible = true;
-            }
-            else
-            {
-                img.IsVisible = false;
-            }
+            Text = ""
         };
 
-        s_grid = new Switch
-        {
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center,
-            IsToggled = false,
-            IsEnabled = true
-        };
-        s_grid.Toggled += (sender, e) =>
-        {
-            if (e.Value)
-            {
-                gr3x3 = Taida_gr3x3();
 
-                gr4x1.Add(gr3x3, 0, 2);
-                gr4x1.SetColumnSpan(gr3x3, 2);
-            }
-            else
-            {
-                gr4x1.RemoveAt(4);
-            }
+        uuesti = new Button
+        {
+            Text = "Alusta uuesti",
+            BackgroundColor = Colors.Red
         };
+        uuesti.Clicked += Uuesti_Clicked;
+   
+        
+        gr3x3 = Taida_gr3x3();
 
-        gr4x1.Add(s_grid, 1, 3);
+        gr4x1.Add(gr3x3, 0, 2);
+        gr4x1.SetColumnSpan(gr3x3, 2);
+        gr4x1.Add(label, 1, 3);
+        gr4x1.Add(uuesti, 0, 1);
         Content = gr4x1;
     }
+
+    private void Uuesti_Clicked(object? sender, EventArgs e)
+    {
+        foreach (var child in gr3x3.Children)
+        {
+            if (child is Border border && border.Content is BoxView kast)
+            {
+                kast.BackgroundColor = Colors.White;
+            }
+        }
+
+        label.Text = "";
+    }
+
 
     private Grid Taida_gr3x3()
     {
@@ -101,10 +94,25 @@ public partial class TripsTrapsTrull : ContentPage
                 int rida = r;
                 int veerg = c;
                 TapGestureRecognizer tap = new TapGestureRecognizer();
-                tap.Tapped += async (s, args) =>
+                tap.Tapped += (s, args) =>
                 {
-                    kast.BackgroundColor = Colors.Green;
-                    //await DisplayAlertAsync("Koordinaadid", $"Vajutasid lahtrisse: \nRida: {rida}\nVeerg: {veerg}", "Selge");
+                    if (kast.BackgroundColor == Colors.White)
+                    {
+                        if (player == "Roheline")
+                        {
+                            kast.BackgroundColor = Colors.Green;
+                            player = "Sinine";
+                            label.Text = "Sinise kord";
+                        }
+                        else if (player == "Sinine")
+                        {
+                            kast.BackgroundColor = Colors.Blue;
+                            player = "Roheline";
+                            label.Text = "Rohelise kord";
+                        }
+                    }
+                    
+
                 };
                 kast.GestureRecognizers.Add(tap);
             }
