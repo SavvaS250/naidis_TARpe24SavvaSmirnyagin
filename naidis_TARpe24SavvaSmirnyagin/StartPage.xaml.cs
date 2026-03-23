@@ -7,9 +7,9 @@ public partial class StartPage : ContentPage
     ScrollView sv;
     public List<ContentPage> Lehed = new List<ContentPage>() { new TextPage(), new FigurePage(), new ValgusFoor(), new DateTime_Page()
         , new StepperSliderPage(), new RgbSlider(), new LumememmPage(), new Pop_Up_Page(), new PopUp_MoistatusedPage(), new PickerImageGrid()
-        , new TripsTrapsTrull()};
+        , new TripsTrapsTrull(), new Table_Page()};
     public List<string> LeheNimed = new List<string>() { "Tekst", "Kujund", "Valgusfoor", "DateTime", "Slider/Stepper", "Rgb slider", "Lumememm", "Pop up",
-          "Mõistatuste leht", "Picker image grid", "Trips-Traps-Trull"};
+          "Mõistatuste leht", "Picker image grid", "Trips-Traps-Trull", "Table page"};
     public StartPage()
     {
         //Title = "Avaleht";
