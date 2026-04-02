@@ -50,18 +50,6 @@ public partial class Table_Page : ContentPage
 
         var contactSection = new TableSection("Kontaktandmed:")
         {
-            new EntryCell
-            {
-                Label = "Nimi",
-                Placeholder = "Sisesta nimi",
-                Keyboard = Keyboard.Text
-            },
-            new EntryCell
-            {
-                Label = "Telefon",
-                Placeholder = "Sisesta tel. number",
-                Keyboard = Keyboard.Telephone
-            },
             email1,
             //new ImageCell
             //{
@@ -69,12 +57,6 @@ public partial class Table_Page : ContentPage
             //    Text = "Foto nimetus",
             //    Detail = "Foto kirjeldus"
             //},
-            new EntryCell
-            {
-                Label = "Kirjeldus",
-                Placeholder = "Sisesta kirjeldus",
-                Keyboard = Keyboard.Text
-            },
             phone1
         };
         string email = email1.Text;
