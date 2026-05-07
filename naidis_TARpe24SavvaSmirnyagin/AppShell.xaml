@@ -25,3 +25,11 @@
         Route="StartPage" />
 
 </Shell>
+<!--<Shell
+    x:Class="MultilangApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MultilangApp.Views">
+
+    <ShellContent Title="Main" ContentTemplate="{DataTemplate views:MainPage}" />
+</Shell>-->
