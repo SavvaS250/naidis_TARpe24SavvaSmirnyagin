@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="naidis_TARpe24SavvaSmirnyagin.MainPage"
+             Title="Memo Game">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label x:Name="scoreLabel"
+               Text="Score: 0"
+               FontSize="28"
+               HorizontalOptions="Center" />
+
+        <Button Text="Change Theme"
+                Clicked="ThemeClicked"/>
+
+        <Button Text="Restart Game" 
+                Clicked="RestartClicked"/>
+
+        <Grid x:Name="GameGrid"
+              RowSpacing="10"
+              ColumnSpacing="10"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
